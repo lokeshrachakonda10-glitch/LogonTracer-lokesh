@@ -1304,7 +1304,7 @@ function createTimelineGraph(queryStr) {
                   borderColor: "rgb(141, 147, 200)",
                   backgroundColor: "rgb(141, 147, 200)",
                   pointHoverBorderColor: "rgb(255, 0, 0)",
-                  lineTension: 0,
+                  tension: 0,
                   fill: false,
                   data: users[i][1].split(","),
                   pointRadius: 5,
@@ -1315,7 +1315,7 @@ function createTimelineGraph(queryStr) {
                   borderColor: "rgb(89, 195, 225)",
                   backgroundColor: "rgb(89, 195, 225)",
                   pointHoverBorderColor: "rgb(255, 0, 0)",
-                  lineTension: 0,
+                  tension: 0,
                   fill: false,
                   data: users[i][2].split(","),
                   pointRadius: 5,
@@ -1326,7 +1326,7 @@ function createTimelineGraph(queryStr) {
                   borderColor: "rgb(30, 44, 92)",
                   backgroundColor: "rgb(30, 44, 92)",
                   pointHoverBorderColor: "rgb(255, 0, 0)",
-                  lineTension: 0,
+                  tension: 0,
                   fill: false,
                   data: users[i][3].split(","),
                   pointRadius: 5,
@@ -1337,7 +1337,7 @@ function createTimelineGraph(queryStr) {
                   borderColor: "rgb(1, 96, 140)",
                   backgroundColor: "rgb(1, 96, 140)",
                   pointHoverBorderColor: "rgb(255, 0, 0)",
-                  lineTension: 0,
+                  tension: 0,
                   fill: false,
                   data: users[i][4].split(","),
                   pointRadius: 5,
@@ -1348,7 +1348,7 @@ function createTimelineGraph(queryStr) {
                   borderColor: "rgb(0, 158, 150)",
                   backgroundColor: "rgb(0, 158, 150)",
                   pointHoverBorderColor: "rgb(255, 0, 0)",
-                  lineTension: 0,
+                  tension: 0,
                   fill: false,
                   data: users[i][5].split(","),
                   pointRadius: 5,
@@ -1359,7 +1359,7 @@ function createTimelineGraph(queryStr) {
                   borderColor: "rgb(230, 0, 57)",
                   backgroundColor: "rgb(230, 0, 57)",
                   pointHoverBorderColor: "rgb(255, 0, 0)",
-                  lineTension: 0,
+                  tension: 0,
                   fill: false,
                   data: users[i][6].split(","),
                   pointRadius: 5,
@@ -1370,50 +1370,64 @@ function createTimelineGraph(queryStr) {
             },
             options: {
               responsive: true,
-              legend: {
-                position: "bottom",
-                fontSize: 15,
+              plugins: {
+                legend: {
+                  position: "bottom",
+                  labels: {
+                    font: {
+                      size: 15
+                    }
+                  }
+                },
+                title: {
+                  display: true,
+                  font: {
+                    size: 18
+                  },
+                  text: users[i][0]
+                }
               },
               scales: {
-                xAxes: [{
+                x: {
                   display: true,
-                  scaleLabel: {
+                  title: {
                     display: true,
-                    fontSize: 15,
-                    labelString: "Date"
-                  }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
-                      display: true,
-                      fontSize: 15,
-                      labelString: "Count"
-                    }
-                  },
-                  {
-                    display: true,
-                    id: "y-right",
-                    position: "right",
-                    scaleLabel: {
-                      display: true,
-                      fontSize: 15,
-                      labelString: "Score"
+                    font: {
+                      size: 15
                     },
-                    ticks: {
-                      max: 20
-                    }
+                    text: "Date"
                   }
-                ]
-              },
-              title: {
-                display: true,
-                fontSize: 18,
-                text: users[i][0]
+                },
+                y: {
+                  display: true,
+                  title: {
+                    display: true,
+                    font: {
+                      size: 15
+                    },
+                    text: "Count"
+                  }
+                },
+                "y-right": {
+                  display: true,
+                  type: "linear",
+                  position: "right",
+                  title: {
+                    display: true,
+                    font: {
+                      size: 15
+                    },
+                    text: "Score"
+                  },
+                  max: 20
+                }
               },
               elements: {
                 point: {
                   pointStyle: "crossRot"
+                },
+                line: {
+                  tension: 0
                 }
               }
             }
