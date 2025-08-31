@@ -35,8 +35,8 @@ The following describes how to create a self-signed SSL certificate. If you can 
 
   ```shell
   $ cd LogonTracer/docker-compose-with-nginx/
-  $ docker-compose build
-  $ docker-compose up -d
+  $ docker compose build
+  $ docker compose up -d
   ```
 
 ### Accessing the Web GUI
