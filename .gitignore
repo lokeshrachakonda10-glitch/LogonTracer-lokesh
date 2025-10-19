@@ -4,3 +4,6 @@
 cache
 upload
 *.log
+*.db
+.DS_Store
+logs/*
